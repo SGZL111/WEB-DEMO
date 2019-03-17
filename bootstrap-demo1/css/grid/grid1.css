@@ -1,0 +1,460 @@
+/*具体解释见文档*/
+/*
+方法一
+*/
+
+.trends{
+    background-color: #f3f3f3;
+    padding: 0 192.5px;
+    margin-top: 32px;
+    overflow: hidden;
+
+}
+
+figure{
+    float: left;
+    margin: 10px;
+    width: 480px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+figure img{opacity: 0.85;}
+
+figure figcaption{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+figure figcaption h2{
+
+    position: absolute;
+    z-index: 999;
+    left: 0;
+    bottom: 0;
+    word-spacing: -5px;
+    width: 50%;
+
+    color: #4ba0b3;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    margin: 13px 25px;
+
+    /*动画时间0.35s*/
+    transition: transform 0.35s;
+    transform: translate3d(100%, 0, 0);
+    -webkit-transition: -webkit-transform 0.35s;
+    -webkit-transform: translate3d(100%, 0, 0);
+}
+
+figcaption h2 span{
+    color: white;
+    font-weight: 600;
+}
+
+.grid figure figcaption p {
+    float: right;
+    margin: 20px 10px 0 28px;
+
+}
+figcaption p a{
+    display: block;
+    transform: translate3d(70px,0,0);
+    -webkit-transform: translate3d(70px,0,0);
+}
+
+a i.download, a i.heart, a i.share, a i.tag {
+    width: 32px;
+    height: 32px;
+    background: url("../../images/icon-spt.png") no-repeat 0 0;
+    /*需要设置display为block或者是inline-block，使其能够设置宽和高，不然会无法显示*/
+    display: inline-block;
+    background-color: red;
+    margin-bottom: 18px;
+    /*为什么这里设置z-index不起作用，z-index使用有何限制条件？？*/
+    /*z-index: 1000;*/
+}
+
+a i.download{ background-position: 0 0;}
+a i.heart{ background-position: -32px 0;}
+a i.share{background-position: -64px 0;}
+a i.tag{background-position: -96px 0;}
+
+a i.download:hover{ background-position: 0 -32px;}
+a i.heart:hover{ background-position: -32px -32px;}
+a i.share:hover {background-position: -64px -32px;}
+a i.tag:hover{background-position: -96px -32px;}
+
+
+/*辅助层*/
+figcaption::before,figcaption::after{
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    border-color: #29282e;
+    border-style: solid;
+    content: '';
+
+    -webkit-transition: -webkit-transform 0.35s;
+    transition: transform 0.35s;
+}
+/*这里要注意：为什么before伪元素中的内容不能与after伪元素中的内容交换*/
+figcaption::before{
+    right: 0;
+    bottom: 0;
+    border-width: 0 70px 60px 0;
+    -webkit-transform: translate3d(70px, 60px, 0);
+    transform: translate3d(70px, 60px, 0);
+}
+figcaption::after{
+    left: 0;
+    top: 0;
+    border-width: 15px 0 0 15px;
+    transform: translate3d(-15px,-15px,0);
+    -webkit-transform: translate3d(-15px,-15px,0);
+
+}
+
+.grid figure img , figcaption p a{
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+}
+
+figure:hover figcaption::before,
+figure:hover figcaption::after,
+figure:hover h2,
+figure:hover p a{
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+}
+
+figure:hover img{opacity: 0.6;}
+figure:hover figcaption p a{ opacity: 1;}
+
+figure.effect-terry:hover p a:first-child {
+    -webkit-transition-delay: 0.025s;
+    transition-delay: 0.025s;
+}
+
+figure.effect-terry:hover p a:nth-child(2) {
+    -webkit-transition-delay: 0.05s;
+    transition-delay: 0.05s;
+}
+
+figure.effect-terry:hover p a:nth-child(3) {
+    -webkit-transition-delay: 0.075s;
+    transition-delay: 0.075s;
+}
+
+figure.effect-terry:hover p a:nth-child(4) {
+    -webkit-transition-delay: 0.1s;
+    transition-delay: 0.1s;
+}
+
+
+
+/*方法2*/
+
+.trends{
+    background-color: #f3f3f3;
+    padding: 0 192.5px;
+    margin-top: 32px;
+    overflow: hidden;
+}
+.trends figure{
+    float: left;
+    margin: 10px;
+    width: 480px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    /*这里添加一层背景颜色，然后实现渐变*/
+    background:  #34495e; ;
+}
+figure img{opacity: 0.85;}
+
+figcaption h2{
+
+    position: absolute;
+    z-index: 999;
+    left: 0;
+    bottom: 0;
+    word-spacing: -5px;
+    width: 50%;
+
+    color: #18a3b7;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    margin: 13px 25px;
+
+    /*动画时间0.35s*/
+    transition: transform 0.35s;
+    transform: translate3d(100%, 0, 0);
+    -webkit-transition: -webkit-transform 0.35s;
+    -webkit-transform: translate3d(100%, 0, 0);
+}
+
+figcaption h2 span{
+    color: white;
+    font-weight: 600;
+}
+
+.grid figure figcaption{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.grid figure figcaption p {
+    float: right;
+    margin: 20px 10px 0 28px;
+
+}
+figcaption p a{
+    width: 32px;
+    height: 32px;
+    background: url("../../images/icon-spt.png") no-repeat 0 0;
+    /*a是内联元素不是内联块级元素，在这里同样需要设置display:block;*/
+    display: block;
+    margin-bottom: 18px;
+
+    transform: translate3d(70px,0,0);
+    -webkit-transform: translate3d(70px,0,0);
+}
+
+
+a.download{ background-position: 0 0;}
+a.heart{ background-position: -32px 0;}
+a.share{ background-position: -64px 0;}
+a.tag{ background-position: -96px 0;}
+
+a.download:hover{ background-position: 0 -32px;}
+a.heart:hover{ background-position: -32px -32px;}
+a.share:hover{ background-position: -64px -32px;}
+a.tag:hover{ background-position: -96px -32px;}
+
+/*辅助层*/
+
+figcaption::before,figcaption::after{
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    border-color: #29282e;
+    border-style: solid;
+    content: '';
+
+    -webkit-transition: -webkit-transform 0.35s;
+    transition: transform 0.35s;
+
+    pointer-events: none;
+}
+/*这里要注意：为什么before伪元素中的内容不能与after伪元素中的内容交换*/
+figcaption::before{
+    right: 0;
+    bottom: 0;
+    border-width: 0 70px 60px 0;
+    -webkit-transform: translate3d(70px, 60px, 0);
+    transform: translate3d(70px, 60px, 0);
+}
+figcaption::after{
+    left: 0;
+    top: 0;
+    border-width: 15px 0 0 15px;
+    transform: translate3d(-15px,-15px,0);
+    -webkit-transform: translate3d(-15px,-15px,0);
+
+}
+
+figure img , figcaption p a{
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+}
+
+figure:hover figcaption::before,
+figure:hover figcaption::after,
+figure:hover h2,
+figure:hover p a{
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+}
+
+
+figure:hover img{opacity: 0.6;}
+figure:hover figcaption p a{ opacity: 1;}
+
+figure.effect-terry:hover p a:first-child {
+    -webkit-transition-delay: 0.025s;
+    transition-delay: 0.025s;
+}
+
+figure.effect-terry:hover p a:nth-child(2) {
+    -webkit-transition-delay: 0.05s;
+    transition-delay: 0.05s;
+}
+
+figure.effect-terry:hover p a:nth-child(3) {
+    -webkit-transition-delay: 0.075s;
+    transition-delay: 0.075s;
+}
+
+figure.effect-terry:hover p a:nth-child(4) {
+    -webkit-transition-delay: 0.1s;
+    transition-delay: 0.1s;
+}
+
+
+/*方法3*/
+.trends{
+    background-color: #f3f3f3;
+    padding: 0 192.5px;
+    margin-top: 32px;
+    overflow: hidden;
+}
+.trends figure{
+    float: left;
+    margin: 10px;
+    width: 480px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    /*这里添加一层背景颜色，然后实现渐变*/
+    background:  #34495e; ;
+}
+figure img{opacity: 0.85;}
+
+figcaption h2{
+
+    position: absolute;
+    z-index: 999;
+    left: 0;
+    bottom: 0;
+    word-spacing: -5px;
+    width: 50%;
+
+    color: #18a3b7;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    margin: 13px 25px;
+
+    /*动画时间0.35s*/
+    transition: transform 0.35s;
+    transform: translate3d(100%, 0, 0);
+    -webkit-transition: -webkit-transform 0.35s;
+    -webkit-transform: translate3d(100%, 0, 0);
+}
+
+figcaption h2 span{
+    color: white;
+    font-weight: 600;
+}
+
+figure p{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 20px 10px 0 28px;
+}
+figure p a{
+    width: 32px;
+    height: 32px;
+    background: url("../../images/icon-spt.png") no-repeat 0 0;
+    /*a是内联元素不是内联块级元素，在这里同样需要设置display:block;*/
+    display: block;
+    margin-bottom: 18px;
+
+    transform: translate3d(70px,0,0);
+    -webkit-transform: translate3d(70px,0,0);
+}
+
+a.download{ background-position: 0 0;}
+a.heart{ background-position: -32px 0;}
+a.share{ background-position: -64px 0;}
+a.tag{ background-position: -96px 0;}
+
+a.download:hover{ background-position: 0 -32px;}
+a.heart:hover{ background-position: -32px -32px;}
+a.share:hover{ background-position: -64px -32px;}
+a.tag:hover{ background-position: -96px -32px;}
+
+/*辅助层*/
+figcaption::before,figcaption::after{
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    border-color: #29282e;
+    border-style: solid;
+    content: '';
+
+    -webkit-transition: -webkit-transform 0.35s;
+    transition: transform 0.35s;
+
+    pointer-events: none;
+}
+/*这里要注意：为什么before伪元素中的内容不能与after伪元素中的内容交换*/
+figcaption::before{
+    right: 0;
+    bottom: 0;
+    border-width: 0 70px 60px 0;
+    -webkit-transform: translate3d(70px, 60px, 0);
+    transform: translate3d(70px, 60px, 0);
+}
+figcaption::after{
+    left: 0;
+    top: 0;
+    border-width: 15px 0 0 15px;
+    transform: translate3d(-15px,-15px,0);
+    -webkit-transform: translate3d(-15px,-15px,0);
+
+}
+
+figure img , figure p a{
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+}
+
+figure:hover figcaption::before,
+figure:hover figcaption::after,
+figure:hover h2,
+figure:hover p a{
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+}
+
+
+figure:hover img{opacity: 0.6;}
+figure:hover  p a{ opacity: 1;}
+
+figure.effect-terry:hover p a:first-child {
+    -webkit-transition-delay: 0.025s;
+    transition-delay: 0.025s;
+}
+
+figure.effect-terry:hover p a:nth-child(2) {
+    -webkit-transition-delay: 0.05s;
+    transition-delay: 0.05s;
+}
+
+figure.effect-terry:hover p a:nth-child(3) {
+    -webkit-transition-delay: 0.075s;
+    transition-delay: 0.075s;
+}
+
+figure.effect-terry:hover p a:nth-child(4) {
+    -webkit-transition-delay: 0.1s;
+    transition-delay: 0.1s;
+}
+
+
+
+
+

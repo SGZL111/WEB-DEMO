@@ -1,0 +1,1369 @@
+
+
+/*网页开发首先清除默认内外边距*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+    margin:0;
+    padding:0;
+}
+html, body{
+    font-family: 'Raleway', sans-serif;
+    background: #28282f;
+    /*设置为字体默认大小 16px*/
+    font-size: 100%;
+    scrollbar-base-color: #afb1b5;
+    /*line-height: 1.42857143;*/
+
+    /*min-width可指定最小宽度，保证排版一直正确*/
+    min-width:480px;
+    margin: 0;
+    padding: 0;
+
+}
+a{text-decoration: none;}
+a:hover{text-decoration: none;}
+/*h系列标签和p标签只有默认的margin,没有默认的padding*/
+h1,h2,h3,h4,h5,h6{margin: 0;}
+p{margin: 0;}
+/*ul,ol标签既有默认的margin,也有默认的padding*/
+ul{
+    margin: 0;
+    padding: 0;
+}
+a{
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+}
+.menu{
+    width: 53px;
+    height: 44px;
+    background: url("../images/nav.png") no-repeat 7px 10px;
+    background-color: #18a3b7;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.navbar{
+    background-color: #28282e;
+    width: 53px;
+    height: 100%;
+    position: fixed;
+    top: 44px;
+    left: 0;
+    border-radius: 0;
+}
+.nav{
+    width: 51px;
+    height: 100%;
+    border: 0.5px solid #222;
+    border-top: none;
+
+    /*块级行内布局*/
+    display: flex;
+    display: -webkit-flex;
+    flex-flow:column wrap;
+}
+.nav li{
+    width: 51px;
+    padding: 15px 0;
+    word-wrap: break-word;
+    border-bottom: 1px solid #222;
+
+    /*行内块级flex布局*/
+    display: inline-flex;
+    flex-direction:column ;
+    justify-content: center;
+    flex-grow:1;
+
+    position: relative;
+}
+
+.nav li a{
+    /*行内块级flex布局*/
+    display: inline-block;
+    padding: 0 26px 0 13px;
+    width: 12px;
+    line-height: 16px;
+    color: #4899ab;
+}
+
+.nav li span{
+    width: 100%;
+    height: 100%;
+
+    /*行内块级flex布局*/
+    display: inline-flex;
+    flex-direction:column ;
+    justify-content: center;
+    flex-grow:1;
+
+    /*移动*/
+    transform-origin: 0px 0px 0px; /*设置旋转元素的基点位置:x轴 y轴 z轴*/
+    -webkit-transform-origin: 0px 0px 0px;
+    transition: .2s;
+    -webkit-transition: .2s;
+
+}
+.nav li span.active{
+    /*https://www.jianshu.com/p/52e0018e6ce2*/
+    /*可用transform内置函数代替matrix3d矩阵*/
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+    /*transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);*/
+    /*-webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);*/
+    background-color: #28282f;
+}
+.nav li:hover span.active{
+    background-color: #999;
+    /*前面设置的基点位置为（0，0，0），根据以下给出的矩阵做矩阵运算，得到（-50，0，0）*/
+    transform: rotateY(-180deg);
+    -webkit-transform: rotateY(-180deg);
+    transform: translate3d(-53px,0,0);
+    -webkit-transform: translate3d(-53px,0,0);
+    /*transform: matrix3d(0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, 0, -50, 0, 0, 1);*/
+    /*-webkit-transform: matrix3d(0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, 0, -50, 0, 0, 1);*/
+}
+.nav li span.hover{
+    position: absolute;
+    top: 0;
+    left: 51px;
+    background-color: #18a3b7;
+    /*结合前面的基点位置（0，0，0），根据以下给出的矩阵进行矩阵运算，得到位置（0，0，0，1）*/
+    transform: rotateY(90deg);
+    -webkit-transform: rotateY(90deg);
+    /*transform: matrix3d(0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1);*/
+    /*-webkit-transform: matrix3d(0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1);*/
+}
+.nav li span.hover a{
+    color: #fff;
+}
+.nav li:hover span.hover{
+    transform: translate3d(-51px,0,0);
+    -webkit-transform: translate3d(-51px,0,0);
+
+    /*transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, -0, -50, 0, 0, 1);*/
+    /*-webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, -0, -50, 0, 0, 1);*/
+}
+
+/*main*/
+.main{
+    margin-left: 53px;
+}
+
+/*header*/
+.header{
+    background: url(../images/banner3.jpg) no-repeat 0px 0px;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -ms-background-size: cover;
+    min-height: 800px;
+}
+.logo{
+    padding-top: 14.95em;
+}
+.logo a,
+.logo-two a{
+    display: block;
+}
+
+.logo a h1,
+.logo-two a h1{
+    color: #4ba1b4;
+    /*96px = 6em */
+    font-size: 6em;
+    font-weight: 400;
+    font-family: 'Cinzel Decorative', cursive;
+    text-shadow: 0px 1px 1px #888;
+}
+.logo a h1 span,
+.logo-two a h1 span{
+    color: white;
+    display: block;
+    /*1.5em = 144px/96px*/
+    font-size: 1.5em;
+    /*0.9em = 130px / 144px*/
+    margin-left: 0.9em;
+    line-height: 1.06em;
+}
+
+.second-head{
+    text-align: center;
+    padding: 64px 0;
+}
+.second-head h3{
+    font-family: 'Cinzel Decorative', cursive;
+    font-weight: 300;
+    font-size: 40px;
+    margin-bottom: 13px;
+    color: #4ba1b4;
+
+}
+.second-head p{
+    line-height: 28px;
+    font-size: 16px;
+    width: 49%;
+    margin: 0 auto;
+    color: #28282e;
+}
+
+/*about*/
+.about{
+    background: white;
+}
+
+/*trends部分*/
+.trends{
+    background-color: #f3f3f3;
+    overflow: hidden;
+    padding-bottom:64px ;
+    width: 100%;
+
+}
+.grid{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: -32px;
+    max-width: 1000px;
+}
+.trends figure{
+    float: left;
+    margin: 10px 1%;
+    max-width: 480px;
+    width: 48%;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    /*这里添加一层背景颜色，然后实现渐变*/
+    background:  #34495e; ;
+}
+figure img{ width: 100%;opacity: 0.85;}
+
+figcaption h2{
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    word-spacing: -0.15em;
+
+    /*注意，这里如果设置margin: 0.4em 10px;则实际所占宽度为 10*2+50% ，设置padding,则padding包含在50%以内*/
+    width: 50%;
+    /*margin: 0.4em 10px;*/
+    padding: 0.4em 10px;
+    text-align: center;
+
+    color: #18a3b7;
+    font-weight: 300;
+    text-transform: uppercase;
+
+
+    /*动画时间0.35s*/
+    transition: transform 0.35s;
+    -webkit-transition: -webkit-transform 0.35s;
+    transform: translate3d(100%, 0, 0);
+    -webkit-transform: translate3d(100%, 0, 0);
+}
+
+figcaption h2 span{
+    color: white;
+    font-weight: 600;
+}
+
+figure p{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 20px 10px 0 28px;
+}
+figure p a{
+    width: 32px;
+    height: 32px;
+    background: url("../images/icon-spt.png") no-repeat 0 0;
+    /*a是内联元素不是内联块级元素，在这里同样需要设置display:block;*/
+    display: block;
+    margin-bottom: 18px;
+
+    transform: translate3d(70px,0,0);
+    -webkit-transform: translate3d(70px,0,0);
+}
+
+a.download{ background-position: 0 0;}
+a.heart{ background-position: -32px 0;}
+a.share{ background-position: -64px 0;}
+a.tag{ background-position: -96px 0;}
+
+a.download:hover{ background-position: 0 -32px;}
+a.heart:hover{ background-position: -32px -32px;}
+a.share:hover{ background-position: -64px -32px;}
+a.tag:hover{ background-position: -96px -32px;}
+
+/*辅助层*/
+figcaption::before,figcaption::after{
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    border-color: #29282e;
+    border-style: solid;
+    content: '';
+
+    -webkit-transition: -webkit-transform 0.35s;
+    transition: transform 0.35s;
+
+    pointer-events: none;
+}
+/*这里要注意：为什么before伪元素中的内容不能与after伪元素中的内容交换*/
+figcaption::before{
+    right: 0;
+    bottom: 0;
+    border-width: 0 70px 60px 0;
+    -webkit-transform: translate3d(70px, 60px, 0);
+    transform: translate3d(70px, 60px, 0);
+}
+figcaption::after{
+    left: 0;
+    top: 0;
+    border-width: 15px 0 0 15px;
+    transform: translate3d(-15px,-15px,0);
+    -webkit-transform: translate3d(-15px,-15px,0);
+
+}
+
+figure img , figure p a{
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+}
+
+figure:hover figcaption::before,
+figure:hover figcaption::after,
+figure:hover h2,
+figure:hover p a{
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+}
+
+
+figure:hover img{opacity: 0.6;}
+figure:hover  p a{ opacity: 1;}
+
+figure.effect-terry:hover p a:first-child {
+    -webkit-transition-delay: 0.025s;
+    transition-delay: 0.025s;
+}
+
+figure.effect-terry:hover p a:nth-child(2) {
+    -webkit-transition-delay: 0.05s;
+    transition-delay: 0.05s;
+}
+
+figure.effect-terry:hover p a:nth-child(3) {
+    -webkit-transition-delay: 0.075s;
+    transition-delay: 0.075s;
+}
+
+figure.effect-terry:hover p a:nth-child(4) {
+    -webkit-transition-delay: 0.1s;
+    transition-delay: 0.1s;
+}
+
+
+/*featured-section*/
+.featured-section{
+    overflow: hidden;
+    background: white;
+    padding-bottom: 64px;
+}
+.featured-text{
+    width: 80%;
+    margin: 0 auto;
+
+}
+
+.col-md-6 h4{
+    font-family:'Cinzel Decorative', cursive ;
+    color: #0b0b0b;
+    font-size: 2em;
+    margin-bottom: 19px;
+}
+.col-md-6>p{
+    line-height: 25px;
+    color: #28282e;
+    font-size: 0.9em;
+    margin-top: 7px;
+
+}
+p.second {margin-bottom: 1px; }
+.col-md-6 > a{
+    /*这里注意display: inline-block;与display: block;的区别*/
+    display: inline-block;
+    background: #1fadc5;
+    color:white;
+    padding: 1em 2em;
+    margin-top: 2em;
+    font-size: 0.9em;
+}
+.col-md-6>a:hover{
+    background: #28282f;
+}
+
+/*bottom-section*/
+.bottom-section{
+    background: url("../images/bottom.jpg");
+    background-size: cover;
+    -webkit-background-size: cover;
+    min-height: 500px;
+}
+.second-head.two{
+    padding-top: 12em;
+    width: 80%;
+    margin: 0 auto;
+}
+.second-head.two p{
+    width: 49%;
+}
+
+
+/*footer section*/
+.footer-section{
+    background: #28282e;
+    overflow: hidden;
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 32px;
+}
+.col-md-3{
+    color: #a1a3aa;
+    width: 25%;
+}
+.col-md-3 h4{
+    color:white;
+    font-size: 19px;
+    padding: 32px 0 17px;
+    font-family:'Cinzel Decorative', cursive ;
+}
+.col-md-3 p.first {
+    font-size: 13.6px;
+    line-height: 24.5px;
+    margin-top: 17px;
+}
+.col-md-3 ul.list{
+    margin-top: 7px;
+    position: absolute;
+    margin-left: -1.5px;
+}
+.col-md-3 ul.list li{
+    float: left;
+    list-style: none;
+    background: #232323;
+    cursor: pointer;
+    margin: 0 4.5px 3px 0;
+    padding: 10px 11.4px;
+    font-size: 0.9em;
+}
+.bird{
+    float: left;
+    width: 10%;
+    margin-right: 2%;
+}
+.bird a{
+    background: url("../images/tw.png") no-repeat 0 0;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    /*什么鬼*/
+    vertical-align: -webkit-baseline-middle;
+}
+.col-md-3 p.special{
+    float: left;
+    width: 88%;
+    font-size: 0.9em;
+    line-height: 23.5px;
+}
+.col-md-3 p > a{
+    color: #d5d5d8;
+}
+.col-md-3 p > a:hover{
+    color: #4ba1b4;
+}
+.col-md-3 p span{
+    display: block;
+    color: white;
+    line-height: 35px;
+}
+
+.col-md-3 ul li:hover{
+    color: #1fadc5;
+}
+.border{
+    border-top: 1px solid #444449;
+    border-bottom: 1px solid #050506;
+    width: 52%;
+    margin-bottom: 21px;
+}
+
+.col-md-3 ul.img li{
+    float: left;
+    list-style: none;
+    margin: 0 3px 3px 0;
+    width: 31%;
+}
+.col-md-3 ul.img li img{
+    width: 100%;
+}
+.copyright{
+    background: #232323;
+    width: 100%;
+    line-height: 60px;
+}
+p.write{
+    position: relative;
+    color:white;
+    text-align: center;
+    font-size: 0.9em;
+}
+.top{
+    position: fixed;
+    bottom: 2px;
+    right: 12px;
+}
+.top a{
+    content: '';
+    background: url("../images/move-top.png") no-repeat 0 0;
+    display: inline-block;
+    width: 38px;
+    height: 25px;
+    cursor: pointer;
+
+}
+
+/*about页面*/
+.header-about{
+    background: url(../images/head-bg.jpg) no-repeat 0px 0px;
+    background-size: cover;
+    -webkit-background-size: cover;
+    min-height: 216px;
+}
+
+.logo-two{
+    padding-top: 2.05em;
+}
+.logo-two a h1{
+    font-size: 4em;
+    margin-left: 6.5em;
+    font-weight: 500;
+    text-shadow: 0px 1px 1px #888;
+}
+.logo-two a h1 span{
+    font-size: 1.2em;
+    margin-left: 0.9em;
+    line-height: 86px;
+}
+
+.abt-text{
+    width: 80%;
+    margin: -16px auto 0;
+}
+.abt-text img{
+    width: 100%;
+}
+.abt-text .ab{
+    padding-top: 14.4px;
+    line-height: 25px;
+    font-size: 14.4px;
+    padding-bottom: 48px;
+}
+.teams{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: -16px;
+}
+.team{
+    float: left;
+    text-align: center;
+}
+.team img{
+    width: 100%;
+}
+.team h5{
+    color: #4ba1b4;
+    font-size: 22.4px;
+    margin: 15px 0 7px;
+}
+.team p{
+    font-size: 0.9em;
+    color: #38485b;
+    line-height: 25px;
+}
+
+.designers-section{
+    overflow: hidden;
+    background-color: white;
+    padding-bottom: 48px;
+}
+.designers{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: -32px;
+}
+.designer-grid img{
+    width: 100%;
+}
+.designer-text h4{
+    font-family: 'Cinzel Decorative', cursive;
+    color: #4ba1b4;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 48px;
+    margin-top: -6px;
+    margin-bottom: 6px;
+}
+
+.designer-text p{
+    font-size: 0.9em;
+   line-height: 25px;
+}
+ul.category{
+    list-style: none;
+    font-size: 0.9em;
+    line-height: 25px;
+    margin-top: 16px;
+    margin-bottom: 32px;
+}
+ul.category li a{
+    color: #28282e;
+}
+ul.category li a:hover{
+    color: #619fb1;
+    margin-left: 16px;
+}
+ul.category li:before{
+    content: '';
+    background: url("../images/arrow.png") no-repeat 0 0;
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    margin: 0 5px 0 32px;
+}
+
+.contact-section{
+    background: white;
+    overflow: hidden;
+
+}
+.contact-infos{
+    width: 80%;
+    margin: 0 auto;
+    color: #131313;
+}
+.contact-infos h3{
+    font-family: 'Cinzel Decorative', cursive;
+    color: #131313;
+    font-size: 27.2px;
+    margin-bottom: 27px;
+}
+.contact-form label{
+    display: block;
+    font-weight: 400;
+    margin: 0;
+}
+.contact-form input,.contact-form textarea{
+    width: 100%;
+    margin: 0.6em 0;
+    padding: 0.8em;
+    border: 1px solid #d5d5d5;
+}
+.contact-form textarea{
+    resize: none;
+    min-height: 180px;
+    /*box-sizing: content-box;*/
+}
+.contact-form a{
+    padding: 0.6em 2em;
+    margin: 0 0 5.84em;
+    font-size: 1.2em;
+}
+.contact-info p{
+    line-height: 25px;
+}
+#main-info{
+    font-size: 1.2em;
+    padding: 1em 0 0.26em;
+    margin-top: 16px;
+    color: #18a3b7;
+    line-height: 27px;
+}
+
+.more-address{
+    margin-top: 48px;
+    color: #28282e;
+    font-size: 0.9em;
+}
+.address-more{
+    float: left;
+    margin-right: 5.17em;
+}
+.address-left{
+    float: left;
+}
+.address-left p a{
+    color: #28282e;
+}
+.address-left p a:hover{
+    color:red;
+}
+
+.team-section{
+    background-color: #f3f3f3;
+    overflow: hidden;
+    padding-top: 16px;
+    padding-bottom:48px ;
+    width: 100%;
+}
+
+
+/*定义多个设备响应阈值*/
+@media (max-width: 1440px) {
+    .header {
+        min-height: 725px;
+    }
+}
+
+@media (max-width: 1366px){
+    .header {
+        min-height: 650px;
+    }
+    .logo{
+        padding-left: 5em;
+    }
+
+    .second-head h3{ font-size: 2.3em; }
+    .bottom-section{ min-height: 440px;}
+    .second-head.two{padding-top: 160px; }
+    .second-head p,.second-head.two p{ width: 54%;}
+
+    .header-about{
+        background: url(../images/head-bg.jpg) no-repeat 0px 0px;
+        background-size: cover;
+        -webkit-background-size: cover;
+        min-height: 201px;
+    }
+    .logo-two{
+        padding-top: 2.4em;
+    }
+
+    .logo-two a h1{
+        font-size: 3.5em;
+        margin-left: 7.93em;
+       }
+    .logo-two a h1 span{
+        line-height: 1.164em;
+    }
+    .designer-text h4{
+        font-size: 30.4px;
+        margin-top: -8px;
+        margin-bottom: 6px;
+    }
+    .contact-form textarea{
+        resize: none;
+        min-height: 160px;
+    }
+
+}
+
+@media (max-width: 1280px){
+    .header {
+        min-height: 662px;
+    }
+
+    .second-head h3{ font-size: 2.2em;   }
+    /*.second-head.two{padding-top: 161px; }*/
+    .second-head.two p{ width: 54%;margin-top: 2px;}
+    .border{ margin-bottom: 20px;}
+    .col-md-3 p.first:last-child{margin-top: 18px;}
+    .col-md-3 ul.list {   width: 190px;margin-top: 6px; margin-left: -1.5px;}
+    .col-md-3 ul.list li{
+        margin: 0 4.5px 2.5px 0;
+        padding: 10.4px 11.4px;
+    }
+    .team h5{
+        font-size: 20px;
+        margin: 14px 0 6px;
+    }
+    .second-head{
+        margin-top: -16px;
+    }
+    .contact-section{
+        padding-top: 16px;
+    }
+}
+
+@media (max-width: 1024px){
+    .header {
+        min-height: 459px;
+    }
+    /*以h1的左外边距为168px来衡量计算会导致首页出现问题，这里使外边距为0*/
+    .container {
+        width: 768px;
+    }
+    .logo {
+        padding-top: 8.05em;
+        padding-left: 0px;
+    }
+    .logo a h1{
+        font-size:4em;
+    }
+    .logo a h1 span{
+        font-size: 1.1em;
+        line-height: 1.09em;
+    }
+    /*由首页确定好container宽度后，其他页面以首页的container宽度为标准设置logo-two h1 的左外边距*/
+    .logo-two a h1{
+        font-size: 3.5em;
+        margin-left: 4.3em;
+    }
+    .logo-two a h1 span{
+        line-height: 1.164em;
+    }
+
+
+    .second-head h3 { font-size: 2em; }
+    .second-head p {width: 64%;}
+    .grid{ width:90%;}
+    figcaption h2{ font-size: 20px; word-spacing: -0.10em;}
+    .featured-text{
+        width: 90%;
+        margin: 0 auto;
+    }
+    p.second{display: none;}
+
+    .col-md-6 h4{
+        font-size:27.2px ;
+        margin-top: -32px;
+        margin-bottom: 16px;
+    }
+
+    .col-md-6 > a{
+        margin-top: 0.9em;
+    }
+    .bottom-section{
+        background: url("../images/bottom.jpg") no-repeat 0px 0px;
+        background-size: cover;
+        -webkit-background-size: cover;
+        min-height: 385px;
+    }
+
+    .second-head.two{padding-top: 112px; }
+    .second-head.two h3{line-height: 51px;margin-bottom: 13px;}
+    .second-head.two p{ width: 64%;}
+    .footer-section{ font-size: 12.8px; width: 90%;}
+    .border{ margin-bottom: 21px;}
+    .col-md-3 h4{
+        font-size: 16px;
+        padding: 32px 0 16px;
+        font-family:'Cinzel Decorative', cursive ;
+    }
+    .col-md-3 p.first {
+        font-size: 12.8px;
+        line-height: 23px;
+    }
+    .col-md-3 p.first:last-child{
+        margin-top: 13px;
+    }
+
+    .col-md-3 ul.list {  margin:2px 0 0 -3px; width:100%;}
+    .col-md-3 ul.list li{margin-right:4px;padding: 0.66em 0.63em;font-size: 12.8px;}
+    .col-md-3 p.special{
+        width: 80%;
+        font-size: 12.8px;
+        line-height: 20.5px;
+    }
+    .col-md-3 p.special:last-child{
+        margin-top: -1px;
+    }
+
+    .col-md-3 p span{
+        line-height: 33px;
+    }
+    .bird{
+        width: 11%;
+
+    }
+    .bird a{
+        margin-top: 6px;
+    }
+    .bird-sec a{
+        margin-top: 5px;
+    }
+    .abt-text{ width: 90%;margin: -16px auto 0;}
+    .teams{width: 90%;}
+    .teams h5{font-size: 17.6px; margin: 12px 0 5px;}
+    .designers-section{
+        padding-bottom: 32px;
+    }
+    .designers{
+        width: 90%;}
+    .designer-text h4{
+        font-size:24px;
+        margin-top: -11px;
+        margin-bottom: 2px;
+    }
+    .contact-infos{
+        width: 90%;
+    }
+    .contact-infos h3{
+        font-size:20.8px;
+        margin-bottom: 21px;
+    }
+    .contact-form input{
+        padding: 9px;
+        height: 36px;
+        margin: 7.24px 0;
+    }
+    .contact-form a{
+        padding: 0.6em 2em;
+        margin-top: -3px;
+        margin-bottom: 3.33em;
+        font-size: 1.2em;
+    }
+    #main-info{
+        font-size: 16px;
+        line-height: 22px;
+        /*margin-bottom: 3px;*/
+        padding: 1em 0 0.1em;
+    }
+    .more-address{
+        margin-top: 16px;
+        color: #28282e;
+        font-size: 0.9em;
+    }
+    .address-more{
+        float: left;
+        margin-right: 1.9em;
+    }
+
+}
+
+@media (max-width: 768px){
+    .header {
+        min-height: 398px;
+    }
+    /*以h1的左外边距为0px来衡量计算*/
+    .container{
+        width: 572px;
+    }
+    .logo{
+        padding-top: 8.35em;
+    }
+    .logo a h1{
+        font-size:3.5em;
+    }
+    .logo a h1 span{
+        font-size: 1.1em;
+        line-height: 1.15em;
+    }
+
+    .header-about{
+        min-height: 187px;
+    }
+    .logo-two{
+        padding-top: 2.6em;
+    }
+    .logo-two a h1{
+        font-size: 3em;
+        margin-left: 3.17em;
+    }
+    .logo-two a h1 span{
+        line-height: 1.3em;
+    }
+
+    .nav li a{padding: 0; margin: 0 auto;}
+    .second-head {padding: 48px 0;}
+    .second-head h3{
+        font-size: 30.5px;
+        margin-bottom: 13px;
+    }
+    .second-head p{
+        line-height: 24px;
+        font-size: 13.6px;
+        width: 75%;
+    }
+    .grid{
+        width: 90%;
+        margin-top: -16px;
+    }
+
+    .grid figure {
+        margin: 10px 1%;
+        min-width: 266px;
+        max-width: 480px;
+        width: 47%;
+    }
+    figure h2 {
+         word-spacing: -0.360em;
+         font-size: 18px;
+     }
+    figure p {
+        text-align: left;
+        font-size: 17%;
+    }
+
+    .col-md-6 h4{
+        margin-top: 16px;
+        font-size: 25.6px;
+    }
+    .featured-section{
+        padding-bottom: 48px;
+    }
+    .bottom-section{
+        min-height: 342px;
+    }
+    .second-head.two{width: 90%;}
+    .second-head.two h3{  font-size: 30.4px;line-height: 48px;}
+    .second-head.two p{ width: 74%;}
+
+    .col-md-3 p{
+        width: 100%;
+    }
+
+    .footer-section{
+        width: 90%;
+        margin-bottom: 16px;
+        padding-top: 8px;
+    }
+    .col-md-3{
+        position: relative;
+        width: 100%;
+        min-height: 130px;
+        /*overflow: hidden;*/
+    }
+    .col-md-3 h4{
+        font-size: 16px;
+        padding: 24px 0 16px;
+    }
+    .col-md-3 p.first {
+        font-size: 12.8px;
+        line-height: 23px;
+    }
+    .border{
+        border-top: 1px solid #444449;
+        border-bottom: 1px solid #050506;
+        width: 52%;
+        margin-bottom: 20px;
+    }
+
+    .col-md-3 ul.list{
+
+        margin-left: -3px;
+    }
+    .col-md-3 ul.list li{
+        float: left;
+        margin-right:4px;
+
+        padding: 0.66em 0.63em;
+    }
+
+    .bird{
+        width: 4%;
+    }
+
+    .col-md-3 p.special{
+        float: left;
+        width: 90%;
+        font-size: 12.8px;
+        line-height: 22px;
+    }
+    .col-md-3 p span{
+        line-height: 31px;
+    }
+    .abt-text{
+        margin: 0 auto 0;
+    }
+    .team{
+        width: 50%;
+        margin-bottom: 1em;
+    }
+    .trends{
+        padding-bottom: 48px;
+    }
+    .designers-section{
+        padding: 16px 0;
+    }
+    .designer-grids{
+        margin-top: 16px;
+    }
+    .designer-grid {
+        width: 25%;
+        float: left;
+    }
+    .designer-text h4{
+        margin-bottom: 13px;
+        line-height: 26.4px;
+    }
+    ul.category{
+        padding-bottom: 11px;
+    }
+    .contact-infos{
+        margin-top: -16px;
+    }
+    .contact-infos h3{
+        font-size:20.8px;
+        margin-bottom: 21px;
+    }
+    .contact-form a{
+        margin-bottom: 41px;
+    }
+    #main-info{
+        margin-top: -21.1px;
+    }
+
+    .more-address{
+       margin-bottom: 64px;
+    }
+    .address-more{
+        float: left;
+        margin-right: 7.65em;
+    }
+
+}
+
+@media (max-width: 640px){
+    .main{margin-left: 0;}
+    .header {
+        min-height: 346px;
+    }
+    /*根据h1的左外边距为168来定*/
+    .container {
+        width: 501px;
+    }
+    .logo{
+        padding-top: 6.6em;
+    }
+    .logo a h1{
+        font-size:3em;
+    }
+    .logo a h1 span{
+        line-height: 1.26em;
+    }
+    .header-about{
+        min-height: 160px;
+    }
+    .logo-two{
+        padding-top: 3.1em;
+    }
+    .logo-two a h1{
+        font-size: 2em;
+        margin-left: 4.55em;
+    }
+    .logo-two a h1 span{
+        line-height: 1.65em;
+    }
+
+    .second-head h3{
+        font-size: 29px;
+        margin-bottom: 13px;
+    }
+    .second-head p{
+        width: 76%;
+    }
+    .trends h3{
+        margin-top: -16px;
+    }
+    .grid{
+        width: 80%;
+    }
+    .grid figure {
+        min-width: 239px;
+        max-width: 480px;
+        width: 38%;
+    }
+    figure h2 {
+        word-spacing: -0.360em;
+        font-size: 13px;
+    }
+
+    .col-md-6{
+        width: 89%;
+        margin: 0 auto;
+    }
+    .bottom-section{
+        min-height: 219px;
+    }
+    .second-head.two{
+        padding-top: 16px;
+    }
+    .second-head.two h3{
+
+        font-size: 1.4em;
+        line-height: 35px;
+    }
+    .second-head.two p{ width: 68%;}
+    .footer-section{
+        width: 80%;
+    }
+
+    .abt-text{
+        width: 80% ;
+    }
+    .abt-text .ab{
+        padding-bottom: 32px;
+    }
+    .team-section{
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .teams{
+        width: 80%;
+    }
+    .teams h5{
+        margin: 13px 0 5px;
+    }
+    .teams p{
+        font-size: 13.6px;
+        line-height: 1.8em;
+    }
+    .trends{
+        padding-bottom: 32px;
+    }
+    .designers{
+        width: 80%;
+    }
+    .designer-grid{
+        width: 45%;
+    }
+    .designer-text h4{
+        font-size: 22.4px;
+        line-height: 25px;
+        margin-bottom: 12px;
+    }
+}
+
+@media (max-width: 480px){
+    .header {
+        min-height: 222px;
+    }
+
+    .container {
+        width: 240px;
+    }
+    .logo{
+        padding-top: 2.63em;
+    }
+    .logo a h1{
+        font-size:3em;
+    }
+    .logo a h1 span{
+        line-height: 1.26em;
+    }
+
+    .header-about{
+        min-height: 120px;
+    }
+    .logo-two{
+        padding-top: 1.25em;
+        padding-left: 0;
+    }
+    .logo-two a h1{
+        font-size:1.8em;
+        margin-left: 0.9em;
+    }
+    .logo-two a h1 span{
+        line-height: 1.8em;
+    }
+
+    .second-head {
+        padding: 32px 0;
+    }
+    .second-head h3{
+        font-size: 25.5px;
+    }
+    .second-head p{
+        width: 70%;
+    }
+    .trends{
+        padding-bottom: 32px;
+    }
+    .trends h3{
+        margin-top: 0;
+    }
+    .grid{
+        width: 70%;
+        padding-top: 16px;
+    }
+    .grid figure {
+        margin: 10px 1%;
+        min-width: 300px;
+        max-width: 480px;
+        width: 48%;
+    }
+    .footer-section{
+        width: 80%;
+        padding-top: 0;
+        margin-left: 16% ;
+    }
+    .col-md-6{
+        margin-left: 12.2%;
+    }
+    .col-md-6 h4{
+        font-size: 20.8px;
+        margin-top: 32px;
+        margin-bottom: 13px;
+    }
+    .bottom-section{
+
+        padding-top: 5px;
+    }
+    .second-head.two h3{
+        width: 98%;
+        font-size: 25.6px;
+        margin-bottom: 13px;
+    }
+    .second-head.two p{ width: 80%;}
+    .abt-text{
+        margin: -16px auto -16px 16%;
+    }
+    .team-section{
+        padding: 16px 0;
+    }
+    .teams{
+        margin: 0 auto 0 13%;
+        width: 81%;
+    }
+    .team{
+        width: 100%;
+    }
+    .team h5{
+        margin: 12px 0 6px;
+    }
+    .designers{
+        width: 80%;
+        margin: 0 auto 0 16%  ;
+    }
+    .designer-grids{
+        margin-top: 11px;
+    }
+    .designer-grid {
+        width: 100%;
+    }
+    .designer-text h4{
+        line-height: 56px;
+        margin-bottom: -3px;
+    }
+    ul.category li:before{
+        margin: 0 5px 0 0;
+    }
+
+    .contact-infos{
+        margin-top:0;
+    }
+
+    .more-address{
+        margin-bottom: 64px;
+    }
+    .address-more{
+        float: left;
+        margin-right: 0.5em;
+    }
+
+}
+
+
+

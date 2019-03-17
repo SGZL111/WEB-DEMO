@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        div{
+            margin: 0;
+            padding: 0;
+        }
+        .solarsys{
+            width: 800px;
+            height: 800px;
+            margin: 0 auto;
+            background-color: #000000;
+            position: relative;
+        }
+        .sun{
+            height: 90px;
+            width: 90px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            background-color: rgb(248,107,35);
+            border-radius: 50%;
+            box-shadow:
+                    5px 5px 10px rgb(248,107,35),
+                    -5px -5px 10px rgb(248,107,35),
+                    5px -5px 10px rgb(248,107,35),
+                    -5px 5px 10px rgb(248,107,35);
+        }
+        .Orbit{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            border: 1px dashed gray;
+            border-radius: 50%;
+        }
+        .sxOribt{
+            width: 115px;
+            height: 115px;
+
+        }
+        .jxOribt{
+            width: 165px;
+            height: 165px;
+        }
+        .earthOribt{
+            width: 250px;
+            height: 250px;
+        }
+        .huoxingOribt{
+            width: 340px;
+            height: 340px;
+        }
+        .muxingOribt{
+            width: 490px;
+            height: 490px;
+        }
+        .tuxingOribt{
+            width: 590px;
+            height: 590px;
+        }
+        .tianwangOribt{
+            width: 690px;
+            height: 690px;
+        }
+        .haiwangOribt{
+            width: 760px;
+            height: 760px;
+        }
+
+        @keyframes rotate {
+            100%{
+                transform: rotate(-360deg);
+            }
+        }
+
+        .shuxing{
+            width: 10px;
+            height: 10px;
+            background-color: rgb(166,138,56);
+
+            position: absolute;
+            top: 337.5px; /*400-115/2-10/2*/
+            left: 395px;
+            border-radius: 50%;
+
+            animation: rotate 1.5s infinite linear;
+            -webkit-animation: rotate 1.5s infinite linear;
+
+            transform-origin: 5px 62.5px;
+            -webkit-transform-origin: 5px 62.5px;
+        }
+        .jinxing{
+            width: 22px;
+            height: 22px;
+            background-color: rgb(246,157,97);
+
+            border-radius: 50%;
+            position: absolute;
+
+            top: 306.5px;
+            left: 389px;
+            animation: rotate 4s infinite linear;
+            -webkit-animation: rotate 4s infinite linear;
+
+            transform-origin: 11px 93.5px;
+            -webkit-transform-origin: 11px 93.5px;
+        }
+        .earth{
+            height: 18px;
+            width: 18px;
+            background-color: rgb(115,114,174);
+            border-radius: 50%;
+            position: absolute;
+
+            top: 266px;
+            left: 391px;
+
+            animation: rotate 6.5s infinite linear;
+            -webkit-animation: rotate 6.5s infinite linear ;
+
+            transform-origin:9px 134px ;
+            -webkit-transform-origin: 9px 134px;
+        }
+        .huoxing{
+            height: 15px;
+            width: 15px;
+            background-color: rgb(140,119,63);
+            border-radius: 50%;
+            position: absolute;
+            top: 222.5px;
+            left: 392.5px;
+
+            animation: rotate 12s infinite linear;
+            -webkit-animation: rotate 12s infinite linear;
+
+            transform-origin: 7.5px 177.5px;
+            -webkit-transform-origin: 7.5px 177.5px;
+        }
+        .muxing{
+            height: 42px;
+            width: 42px;
+            background-color: rgb(156,164,143);
+            border-radius: 50%;
+            position: absolute;
+            top: 134px;
+            left: 379px;
+            animation: rotate 70s infinite linear;
+            -webkit-animation: rotate 70s infinite linear;
+
+            transform-origin: 21px 266px;
+            -webkit-transform-origin: 21px 266px;
+        }
+        .tuxing{
+            height: 26px;
+            width: 26px;
+            background-color: rgb(215,171,68);
+            border-radius: 50%;
+            position: absolute;
+
+            top: 92px;
+            left: 387px;
+
+            animation: rotate 160s infinite linear;
+            -webkit-animation: rotate 160s infinite linear;
+
+            transform-origin: 13px 308px;
+            -webkit-transform-origin: 13px 308px;
+        }
+        .tianwang{
+            height: 27px;
+            width: 27px;
+            background-color: rgb(164,192,206);
+            border-radius: 50%;
+            position: absolute;
+
+            top: 41.5px;
+            left: 386.5px;
+            animation: rotate 360s infinite linear;
+            -webkit-animation: rotate 360s infinite linear;
+
+            transform-origin: 13.5px 345px;
+            -webkit-transform-origin:13.5px 345px ;
+        }
+        .haiwang{
+            border-radius: 50%;
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            background-color: rgb(133,136,180);
+
+            top: 10px;
+            left: 390px;
+            animation:rotate 720s infinite linear;
+            -webkit-animation: rotate 720s infinite linear;
+
+            transform-origin: 10px 390px;
+            -webkit-transform-origin: 10px 380px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<p>太阳系</p>
+<div class="solarsys">
+    <div class="sun"></div>
+    <div class="shuxing"></div>
+    <div class="sxOribt Orbit"></div>
+    <div class="jinxing"></div>
+    <div class="jxOribt Orbit"></div>
+    <div class="earth"></div>
+    <div class="earthOribt Orbit"></div>
+    <div class="huoxing"></div>
+    <div class="huoxingOribt Orbit"></div>
+    <div class="muxing"></div>
+    <div class="muxingOribt Orbit"></div>
+    <div class="tuxing"></div>
+    <div class="tuxingOribt Orbit"></div>
+    <div class="tianwang"></div>
+    <div class="tianwangOribt Orbit"></div>
+    <div class="haiwang"></div>
+    <div class="haiwangOribt Orbit"></div>
+</div>
+
+</body>
+</html>
