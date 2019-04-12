@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://cdn.bootcss.com/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+<div class="message">
+    <div class="msg-content">
+          </div>
+    <!--button要写明type类型，不然不同浏览器的默认类型不同，有的浏览器可能是submit-->
+    <button type="button" class="end">知道了</button>
+
+    <span class="add"> +  </span>
+    <button type="button" class="later">
+        延迟 <label class="later-time">1</label> 分钟提醒
+    </button>
+    <span class="minus"> - </span>
+
+
+</div>
+
+<div class="container">
+    <h1>My task</h1>
+    <div class="add-task">
+        <!--autofocus属性自动获得焦点,设置autocomplete属性关闭输入时的提示-->
+        <input id="txt" type="text" placeholder="e.g.下午记得买菜..." autocomplete="off">
+        <button type="submit" id="btn">submit</button>
+    </div>
+    <div class="tasks-list" id="tasks-list">
+    </div>
+
+    <!--task 详情-->
+    <div class="task-detail-mask"></div>
+    <div class="task-detail">
+    </div>
+</div>
+
+
+<!--<div class="pop-mask"></div>-->
+<!--<div class="pop-alert">-->
+    <!--<div class="alert-title">确定删除？</div>-->
+    <!--<div class="alert-content">-->
+        <!--<div>-->
+            <!--<button type="button" class="confirm">确定</button>-->
+            <!--<button type="button" class="cancel">取消</button>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<video  class="alert" src="alert.mp3"></video>
+
+<script src='js/jquery-1.7.2.js'></script>
+<script src="js/store.js"></script>
+<script src="https://cdn.bootcss.com/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+<script src="js/t2.js"></script>
+
+</body>
+</html>

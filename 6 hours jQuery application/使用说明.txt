@@ -1,0 +1,102 @@
+<6小时jQuery应用>功能
+1.添加/修改/删除Task
+2.定时/延时响铃提醒 
+3.localStorage本地存储
+4.jQuery插件及API(store.js实现localStorage读取和存储/datetimepicker日期插件、deferred使用)
+5.自定义alert()功能：使用自定义alert()的好处是后头所有东西没有冻结，程序尚未暂停，若使用原生的alert()，则程序被暂停，只有用户点击确定/取消后，才能继续运行？
+
+添加功能：
+1.标记完成后应该关闭修改功能呀，只允许查看
+2.闹钟延时提醒
+3.依赖jqueryUI实现弹框的拖动
+4.利用requireJS实现模块化管理
+
+
+
+ 
+
+1.默认样式重置 reset.css
+
+2.CDN:   (1)www.bootcdn.cn   (2)百度静态资源公共库 （3）Staticfile CDN（http://www.staticfile.org/）
+
+3.jQuery性能优化问题 https://www.jb51.net/article/47639.htm
+
+7.jQuery中提供了四种事件监听方式，分别是bind、live、delegate、on，对应的解除监听的函数分别是unbind、die、undelegate、off。  
+
+（1）bind会把监听器绑定到目标元素上，在页面上的元素不会动态添加的时候使用它没什么问题。但如果列表中动态增加一个“列表元素5”，点击它是没有反应的，必须再bind一次才行。
+（2）live将监听器绑定到了this.context（指元素的限定范围，如document）上，live正是利用了事件委托机制来完成事件的监听处理，把节点的处理委托给了document。在监听函数中，我们可以用event.currentTarget来获取到当前捕捉到事件的节点。缺点：将监听器绑定到了document上，事件的处理得等待层层冒泡，直到冒泡到根节点才开始处理，根节点的负担太重。
+（3）delegate 将监听器将绑定在调用此方法的元素上。
+（4）on：推荐尽量使用on，因为其他方法都是内部调用on来完成的，直接使用on可以提高效率，而且完全可以用on来代替其他三种写法。
+
+
+8.
+$.extend() 函数用于将一个或多个对象的内容合并到目标对象。如果多个对象具有相同的属性，则后者会覆盖前者的属性值。$.extend(object1, object2);（object2 合并到 object1 中）
+$.merge() 函数用于合并两个数组内容到第一个数组。var arr = $.merge( [0,1,2], [2,3,4] );
+$.extend()方法实现对象的扩展，即实现默认参数和用户传入参数；
+
+
+9.表单的提交功能？？submit？？？
+当提交表单时，会发生submit事件，该事件只适用于<form>元素，两种方式：http://www.runoob.com/jquery/event-submit.html
+（1）触发被选元素的 submit 事件：$(selector).submit()
+（2）添加函数到 submit 事件：$(selector).submit(function)
+
+10.jQuery中 deferred的概念和使用方式 ： 用于异步操作，等待对方返回了结果，再把结果返回给你
+
+ http://www.ruanyifeng.com/blog/2011/08/a_detailed_explanation_of_jquery_deferred_object.html
+
+https://www.imooc.com/article/20676
+
+deferred对象的三种执行状态：未完成、已完成、已失败
+
+var dtd = $.Deferred(); // 新建一个Deferred对象
+
+
+11.
+
+
+注意delete task_list[index];中的问题：
+
+jQuery不会自动绑定数据和渲染的变化，必须手动添加事件监控;
+
+
+添加标记的完成状态，已完成状态放到下面
+
+
+
+问题：
+1.勾选CheckBox出错，想取消某一栏前面的勾，却把其他Task前面的勾给勾上了，错误原因：data-index属性混乱，在显示task列表时，是首先显示未完成task，然后再显示已完成task，两部分的data-index属性都从0开始（就是这里导致混乱），正确做法是后面一部分的data-index应该承接前一部分。
+
+2. $('.delete').on('click',function () { }) 使用on绑定事件和
+直接使用$('.delete').click(function(){})有何区别？？
+https://www.cnblogs.com/huanghuali/p/8602717.html
+简单解释：后者是针对页面中已经存在的DOM添加事件，对于动态创建的元素无法触发事件；前者对于动态创建的元素也能触发事件；
+
+3.在添加list过程中出现两个问题：第一，关于变量new_list的作用域错误，刚开始定义在全局作用域，每次在文本框中输入的文本会覆盖前面的记录？？第二，.tasks_list中，每次都会添加多条数据,这是因为没有注意每次添加task时，需要把#tasks_list中的内容清空，因为每次添加都是针对task_list中的全部；
+
+
+4.data自定义属性在jQuery中的用法：https://blog.csdn.net/wei_ke_zhi/article/details/82221724
+
+添加Task：将新的Task添加到数组task_list中，再把task_list数组转化成一个JSON对象,并存到localStorage中；
+读取Task：从localStorage中取出JSON对象,再将JSON转为数组；
+删除Task：每次添加task时，在render_task_item()中传入index,在新增的div中添加data-index=’index‘,这样保证每条新增的task都有一条索引值，删除task的时候通过这个index记录来删除，更新localStorage；
+
+5.js push()方法存入局部变量的引用地址,离开函数作用域后,局部变量不应该释放内存吗？那么引用地址还有效吗？？(涉及垃圾回收机制)
+JS执行环境栈、栈内存和堆内存：https://www.jianshu.com/p/903b18d70baa
+JS垃圾回收机制 ——标记清除和引用计数
+
+
+
+
+
+
+
+5.store.js源码解读 
+
+datetimepicker()插件
+
+
+
+声明与定义
+BOM与DOM
+
+
