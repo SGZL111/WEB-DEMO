@@ -1,0 +1,6 @@
+移动WebApp阅读器开发
+
+总结：https://blog.csdn.net/sgzl111/article/details/89300578
+HTML5技术参考：https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/HTML5
+animate.css演示 : https://daneden.github.io/animate.css/
+EC6入门：http://es6.ruanyifeng.com/
