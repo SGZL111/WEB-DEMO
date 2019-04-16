@@ -1,0 +1,37 @@
+
+注意点：注意css文件和js文件的加载顺序，应该先加载css文件，再加载js文件；
+
+
+
+第二板块：
+1.在视频滑动播放那块，为什么外面要设置position:absolute;而里面设置positive：relative;
+2.鼠标移入mobile后，设置背景图片随鼠标的偏移反方向移动
+3.版块加载时，设置mobile-scroll的连续向上滚动（大概是滚动了三个图片大小的长度）
+
+
+第三板块：
+1.点击模态框的close图标，虽然界面已关闭但视频中的声音仍在播放，这里需要使用pause()方法暂停视频，然后遇到”$('#video').pause();“无法暂停的问题，解析如下2.https://www.cnblogs.com/qjuly/p/7993415.html
+
+2.transition: all .4s .4s ease;与 transition: all .4s ease;的区别？？？
+
+3.video加载并设置autoplay后，不能自动播放？？
+Mac版的chrome浏览器默认禁掉带有声音的多媒体自动播放功能，导致设置autoplay失效，解决：在chrome 浏览器中输入：chrome://flags，搜索“Autoplay policy”，默认为“Default”，修改为 “No user gesture is required” 就可以了。https://www.jianshu.com/p/57da5fe6494c
+
+4.多行首字符对齐可使用text-index:8px;设置
+
+
+技术点：
+1.导航栏
+2.模态框
+3.页面动画
+4.键盘和鼠标滚轮控制页面上下翻转
+5.视频播放
+
+
+问题及解决方案：
+1.js脚本实现动画：当页面滑入版块时，设置各对象的css状态A，当页面离开版块时，设置各对象的css状态B，过渡两种css状态并设置过度效果来实现页面动画。
+2.”$('#video').pause();“无法暂停：jQuery选择器返回的是jQuery对象，无pause()方法，可由trigger()触发pause事件，如“$('#video').trigger('pause');”；另外也可通过dom对象直接使用pause()，如“document.getElementById('video').pause();”。
+3.jQuery中尽管$(document).ready确实很有用， 它可以在页面渲染时，其它元素还没下载完成就执行。如果你发现你的页面一直是载入中的状态，很有可能就是$(document).ready函数引起的。你可以通过将jQuery函数绑定到$(window).load 事件的方法来减少页面载入时的cpu使用率。它会在页面完全载入后执行。
+可以使用$(window).load(function(){});代替$(document).ready(function(){});
+
+
