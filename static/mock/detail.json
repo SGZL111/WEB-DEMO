@@ -1,0 +1,28 @@
+{
+  "ret": true,
+  "data":{
+    "sightName": "西溪国家湿地公园·周家村(AAAAA景区)",
+    "bannerImg": "http://img1.qunarzz.com/sight/p0/1907/40/401b7b735008f7f4a3.img.jpg_600x330_d1fcb59f.jpg",
+    "gallaryImgs": [
+      "http://img1.qunarzz.com/sight/p0/1907/aa/aa4500ed427eee05a3.img.jpg_r_800x800_262436e7.jpg",
+      "http://img1.qunarzz.com/sight/p0/1611/7f/7fe6e4391a5171b2a3.img.jpg_r_800x800_10136e2a.jpg"
+    ],
+    "categoryList": [{
+      "title": "成人票",
+      "children": [{
+        "title": "成人三馆联票",
+        "children": [{
+          "title": "三级"
+        }]
+      }, {
+        "title": "成人五馆联票"
+      }]
+    }, {
+      "title": "学生票"
+    }, {
+      "title": "儿童票"
+    }, {
+      "title": "特惠票"
+    }]
+  }
+}

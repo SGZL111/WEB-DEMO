@@ -1,0 +1,146 @@
+{
+  "ret": true,
+  "data": {
+    "hotCities": [{
+      "id": 1,
+      "spell": "beijing",
+      "name": "北京"
+    },{
+      "id": 3,
+      "spell": "shanghai",
+      "name": "上海"
+    },{
+      "id": 47,
+      "spell": "xian",
+      "name": "西安"
+    },{
+      "id": 239,
+      "spell": "sanya",
+      "name": "三亚"
+    },{
+      "id": 125,
+      "spell": "guilin",
+      "name": "桂林"
+    }],
+    "cities": {
+      "A": [{
+        "id": 56,
+        "spell": "aba",
+        "name": "阿坝"
+      },{
+        "id": 57,
+        "spell": "akesu",
+        "name": "阿克苏"
+      },{
+        "id": 58,
+        "spell": "alashanmeng",
+        "name": "阿拉善盟"
+      }],
+      "B": [{
+        "id": 59,
+        "spell": "bayanzhuoer",
+        "name": "巴彦淖尔"
+      },{
+        "id": 60,
+        "spell": "bazhong",
+        "name": "巴中"
+      },{
+        "id": 61,
+        "spell": "baicheng",
+        "name": "白城"
+      },{
+        "id": 62,
+        "spell": "baisha",
+        "name": "白沙"
+      },{
+        "id": 63,
+        "spell": "baotou",
+        "name": "包头"
+      }],
+      "C": [{
+        "id": 64,
+        "spell": "cangzhou",
+        "name": "沧州"
+      },{
+        "id": 65,
+        "spell": "cangdu",
+        "name": "昌都"
+      },{
+        "id": 66,
+        "spell": "cangji",
+        "name": "昌吉"
+      },{
+        "id": 67,
+        "spell": "changzhou",
+        "name": "常州"
+      },{
+        "id": 68,
+        "spell": "chaohu",
+        "name": "巢湖"
+      }],
+      "D": [{
+        "id": 69,
+        "spell": "dazhou",
+        "name": "达州"
+      },{
+        "id": 70,
+        "spell": "dali",
+        "name": "大理"
+      },{
+        "id": 71,
+        "spell": "dalian",
+        "name": "大连"
+      },{
+        "id": 72,
+        "spell": "daqing",
+        "name": "大庆"
+      },{
+        "id": 73,
+        "spell": "datong",
+        "name": "大同"
+      },{
+          "id": 74,
+          "spell": "dandong",
+          "name": "丹东"
+        },{
+          "id": 75,
+          "spell": "danshui",
+          "name": "淡水"
+        },{
+          "id": 76,
+          "spell": "dehong",
+          "name": "德宏"
+        },{
+          "id": 77,
+          "spell": "deyang",
+          "name": "德阳"
+        },{
+          "id": 78,
+          "spell": "dingan",
+          "name": "定安"
+        },
+        {
+          "id": 79,
+          "spell": "dingxi",
+          "name": "定西"
+        },{
+          "id": 80,
+          "spell": "dongfang",
+          "name": "东方"
+        },{
+          "id": 81,
+          "spell": "dongying",
+          "name": "东营"
+        }],
+      "E": [{
+        "id": 82,
+        "spell": "ezhou",
+        "name": "鄂州"
+      },{
+        "id": 83,
+        "spell": "enshi",
+        "name": "恩施"
+      }]
+    }
+  }
+}
